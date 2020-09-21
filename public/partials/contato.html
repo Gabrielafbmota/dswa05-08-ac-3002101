@@ -1,0 +1,48 @@
+<div style="padding-bottom: 80px;" class="jumbotron bg-dark">
+  <h1 style="position: absolute; top: 40px; left:600px; color:#00852C;" class="text-center">Contato</h1>
+  <img style="position: absolute; top: 10px; left: 150px;" class="img-fluid"src="Logo.jpg" alt="Logo IFSP" />
+</div>
+
+<p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/#/contatos">Contatos</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/#/cursos">Cursos</a>
+      </li>      
+    </ul>
+  </div>
+</nav>
+
+<form style="padding-bottom: 10px; padding-top: 20px;" ng-submit="salva()">
+  <div class="form-group">
+    <label for="nome">Nome Completo</label>
+    <input type="text" class="form-control" id="nome" required ng-model="contato.nome" />
+  </div>
+  <div class="form-group">
+    <label for="email">E-mail</label>
+    <div class="form-group">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="basic-addon1">@</span>
+        </div>
+        <input type="email" class="form-control" name="email" id="email" ng-model="contato.email" placeholder="email@email.com" aria-label="Email" aria-describedby="basic-addon1">
+      </div>
+    </div>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-primary">
+      Salvar
+    </button>
+    <a href="#/" class="btn btn-default">Voltar</a>
+  </div>
+</form>

@@ -1,0 +1,60 @@
+<div style="padding-bottom: 80px;" class="jumbotron bg-dark">
+  <h1 style="position: absolute; top: 40px; left:600px; color:#00852C;" class="text-center">Bem vindo ao IFSP</h1>
+  <img style="position: absolute; top: 10px; left: 150px;" class="img-fluid"src="Logo.jpg" alt="Logo IFSP" />
+</div>
+
+<p ng-show="mensagem.texto">{{mensagem.texto}}</p>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#conteudoNavbarSuportado" aria-controls="conteudoNavbarSuportado" aria-expanded="false" aria-label="Alterna navegação">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="conteudoNavbarSuportado">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/#/contatos">Contatos</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="/#/cursos">Cursos</a>
+      </li>      
+    </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text material-icons" id="basic-addon1">
+            search
+          </span>
+        </div>
+        <input class="form-control"  ng-model="filtro" type="search" placeholder="Digite parte do nome" aria-describedby="basic-addon1">
+      </div>
+      
+      
+    </form>
+  </div>
+</nav>
+
+<div style="padding-bottom: 10px; padding-top: 20px;">
+  <a class="btn btn-dark" ng-href="#/curso">
+    <span>Novo Curso</span>
+  </a> 
+</div>
+
+<div class="bg-dark" style="border-radius: 10px; width: 220px;">
+ <p ng-show="cursos.length" style="color: white; font-size: 16px; font-weight: bold; padding: 10px">Cursos Cadastrados: {{ cursos.length }}</p>
+</div>
+<p style="color: red; font-weight: bold;" ng-hide="cursos.length">Nenhum curso cadastrado</p>
+<div class="table-responsive">
+  <table class="table table-hover">
+    <tr class="bg-dark">
+      <th style="color: white;">CURSO</th>
+      <th style="color: white;">COORDENADOR</th>
+      <th  style="color: white;"class="text-center">AÇÃO</th>
+    </tr>
+    <tr ng-repeat="curso in cursos | filter: filtro">
+      <td><a ng-href="#/curso/{{curso._id}}">{{curso.curso}}</a></td>
+      <td>{{curso.coordenador}}</td>
+      <td class="text-center"><button  ng-click='remove(curso)' class="btn btn-warning">Remover</button></td>
+    </tr>
+  </table>
+</div>

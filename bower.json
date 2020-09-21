@@ -1,0 +1,22 @@
+{
+  "name": "dswa5aula03_3002101",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Gabriela <gabrielamota.unicamp@gmail.com>"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "1.7",
+    "angular-route": "1.3",
+    "bootstrap": "^4.4.1",
+    "angular-resource": "1.3"
+  }
+}
