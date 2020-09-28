@@ -16,7 +16,8 @@
     "express": "^4.17.1",
     "express-load": "^1.1.16",
     "install": "^0.13.0",
-    "method-override": "^3.0.0"
+    "method-override": "^3.0.0",
+    "mongodb": "^3.6.2"
   },
   "devDependencies": {}
 }

@@ -1,7 +1,6 @@
 angular
   .module("ifsp")
-  .controller("ContatoController", function ($scope, $routeParams, $resource) {
-    var Contato = $resource("contatos/:id");
+  .controller("ContatoController", function ($scope, $routeParams, Contato) {
     if ($routeParams.contatoId) {
       Contato.get(
         { id: $routeParams.contatoId },
