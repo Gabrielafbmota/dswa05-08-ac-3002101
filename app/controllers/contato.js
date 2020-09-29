@@ -24,7 +24,7 @@ module.exports = function (app) {
         function (contato) {
           if (!contato) throw new Error("Contato não encontrado");
 
-          res.json(contato);
+          res.status(200).send(contato);
         },
         function (error) {
           console.error(error);
@@ -33,6 +33,33 @@ module.exports = function (app) {
       );
   };
   controller.salvaContato = function (req, res) {
+    const { id } = req.body;
+    if (id) {
+      Contato.findByIdAndUpdate({ _id: id }, req.body)
+        .exec()
+        .then(
+          function (contato) {
+            console.log(contato);
+            res.json(contato);
+          },
+          function (error) {
+            console.error(error);
+            res.status(500).send(error);
+          }
+        );
+    } else {
+      Contato.create(req.body).then(
+        function (contato) {
+          res.json(contato);
+        },
+        function (error) {
+          console.error(error);
+          res.status(500).send(error);
+        }
+      );
+    }
+  };
+  controller.removerContato = function (req, res) {
     const { id } = req.params;
     Contato.deleteOne({ _id: id })
       .exec()
@@ -45,34 +72,6 @@ module.exports = function (app) {
           res.status(500).send(error);
         }
       );
-  };
-  controller.removerContato = function (req, res) {
-    const { id } = req.body;
-    if (id) {
-      Contato.findByIdAndUpdate({ _id: id }, req.body)
-        .exec()
-        .then(
-          function (contato) {
-            res.json(contato);
-          },
-          function (error) {
-            console.error(error);
-            res.status(500).send(error);
-          }
-        );
-    } else {
-      Contato.create(req.body)
-        .exec()
-        .then(
-          function (contato) {
-            res.json(contato);
-          },
-          function (error) {
-            console.error(error);
-            res.status(500).send(error);
-          }
-        );
-    }
   };
 
   return controller;
