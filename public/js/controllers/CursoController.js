@@ -23,7 +23,7 @@ angular
         })
         .catch(function (err) {
           console.log(err);
-          $scope.mensagem = { texto: "não foi possivel salvar o contato" };
+          $scope.mensagem = { texto: "não foi possivel salvar o curso" };
         });
     };
   });
