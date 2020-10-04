@@ -45,9 +45,11 @@ module.exports = function (app) {
       );
   };
   controller.salvaCurso = function (req, res) {
-    const { id } = req.body;
+    const { id } = req.params;
+    const { coordenador, curso } = req.body;
+    const save = { coordenador, curso };
     if (id) {
-      Curso.findByIdAndUpdate({ _id: id }, req.body)
+      Curso.findByIdAndUpdate({ _id: id }, save)
         .exec()
         .then(
           function (curso) {
@@ -60,7 +62,7 @@ module.exports = function (app) {
           }
         );
     } else {
-      Curso.create(req.body).then(
+      Curso.create(save).then(
         function (curso) {
           res.json(curso);
         },
