@@ -45,15 +45,12 @@ module.exports = function (app) {
       );
   };
   controller.salvaCurso = function (req, res) {
-    const { id } = req.params;
-    const { coordenador, curso } = req.body;
-    const save = { coordenador, curso };
+    const id = req.body._id;
     if (id) {
-      Curso.findByIdAndUpdate({ _id: id }, save)
+      Curso.findByIdAndUpdate({ _id: id }, req.body)
         .exec()
         .then(
           function (curso) {
-            console.log(curso);
             res.json(curso);
           },
           function (error) {

@@ -1,6 +1,5 @@
 module.exports = function (app) {
   const Contato = app.models.contato;
-
   const controller = {};
 
   controller.listaContatos = function (req, res) {
@@ -33,13 +32,12 @@ module.exports = function (app) {
       );
   };
   controller.salvaContato = function (req, res) {
-    const { id } = req.body;
+    const id = req.body._id;
     if (id) {
-      Contato.findByIdAndUpdate({ _id: id }, req.body)
+      Contato.findByIdAndUpdate(req.body)
         .exec()
         .then(
           function (contato) {
-            console.log(contato);
             res.json(contato);
           },
           function (error) {
